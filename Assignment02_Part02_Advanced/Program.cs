@@ -2,10 +2,43 @@
 {
     internal class Program
     {
+
+        #region 2.Given a Stack, implement a function to check if a string of parentheses is balanced using a stack.
+
+        static bool IsBalanced(string input)
+        {
+            Stack<char> stack = new Stack<char>();
+
+            foreach (char ch in input)
+            {
+                if (ch == '(' || ch == '{' || ch == '[')
+                {
+                    stack.Push(ch);
+                }
+                else
+                {
+                    if (stack.Count == 0) 
+                        return false;
+
+                    char top = stack.Pop();
+
+
+                    if ((ch == ')' && top != '(') ||  (ch == '}' && top != '{') || (ch == ']' && top != '['))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return stack.Count == 0;
+        } 
+
+        #endregion
+
         static void Main(string[] args)
         {
             #region 1.Given a Queue, implement a function to reverse the elements of a queue using a stack.
-            
+
             //Queue<int> queue = new Queue<int>();
 
             //queue.Enqueue(1);
@@ -35,6 +68,12 @@
 
             #endregion
 
+            #region 2.Given a Stack, implement a function to check if a string of parentheses is balanced using a stack.
+           
+            //string Input = "[()]{}";
+            //Console.WriteLine($"Input: {Input}  \nOutput: {(IsBalanced(Input) ? "Balanced" : "Not Balanced")}"); 
+
+            #endregion
 
         }
     }
